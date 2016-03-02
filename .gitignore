@@ -3,4 +3,4 @@ node_modules
 npm-debug.log
 dist
 static
-*.sublime-project
+react-tube.sublime-project
