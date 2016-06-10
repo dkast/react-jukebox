@@ -1,5 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
+var NpmInstallPlugin = require('npm-install-webpack-plugin');
+var WebpackNotifier = require('webpack-notifier');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -15,7 +17,13 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new WebpackNotifier({
+      alwaysNotify: true
+    }),
+    new NpmInstallPlugin({
+      save: true
+    })
   ],
   module: {
     loaders: [
@@ -26,18 +34,6 @@ module.exports = {
       { test: /\.ttf$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
       { test: /\.eot$/, loader: 'file' },
       { test: /\.svg$/, loader: 'url?limit=10000&mimetype=image/svg+xml' }
-    ],
-    postLoaders: [
-      {
-        exclude: /node_modules/,
-        loader: 'npm-install-loader',
-        test: /\.js$/,
-        query: {
-          cli: {
-            save: true
-          },
-        }
-      }
     ]
   }
 };

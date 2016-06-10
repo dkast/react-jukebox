@@ -8,8 +8,8 @@ var port = 3000;
 
 var compiler = webpack(config);
 
-app.use(webpackDevMiddleware(compiler, { 
-  noInfo: true, 
+app.use(webpackDevMiddleware(compiler, {
+  noInfo: true,
   publicPath: config.output.publicPath,
   stats: {
     color: true
@@ -19,7 +19,7 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 
 app.use(function(req, res) {
-  res.sendfile(__dirname + '/index.html')
+  res.sendFile(__dirname + '/index.html')
 });
 
 app.listen(port, function(error) {
