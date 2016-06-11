@@ -7,7 +7,8 @@ export default function configureStore(history, initialState) {
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(routerMiddleware(history))
+      applyMiddleware(routerMiddleware(history)),
+      window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   );
 

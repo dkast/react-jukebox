@@ -1,0 +1,29 @@
+
+@import './reset';
+@import '../../node_modules/semantic-ui-less/semantic';
+
+@type    : 'global';
+@element : 'site';
+
+@import (multiple) '../../node_modules/semantic-ui-less/theme.config';
+
+/*Local vars*/
+@sidebar: #161616;
+@graphite: #3e454c;
+@silver: #AAB2BD;
+@background: #F5F7FA;
+
+// Mixins
+.rgbaColorIn(@color, @opacity : 1){
+  @result: rgba( red(@color), green(@color), blue(@color), @opacity );
+}
+
+// Layout
+body {
+  height: auto;
+  background-color: @background;
+}
+
+.main.container {
+  margin-top: 6em;
+}
